@@ -36,6 +36,8 @@ public class BubbleSort {
         }
     }
 
+    // Geek for geeks
+    // https://www.geeksforgeeks.org/bubble-sort/
     public static void bubbleSort2(int[] n) {
         int length = n.length;
         for (int i = 0; i < length - 1; i++) {
@@ -50,7 +52,8 @@ public class BubbleSort {
             }
         }
     }
-    
+
+    // My own implementation of bubble sort
     public static void bubbleSort3(int[] n) {
         for (int i = 0; i < n.length; i++) {
             for (int j = 1; j < n.length - i; j++) {
