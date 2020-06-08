@@ -32,7 +32,7 @@ public class CountingSort {
         }
 
         int k = 0;
-        for (int i = 0; i < max; i++) {
+        for (int i = 0; i < count.length; i++) {
 
             // Loop each count of number i
             for (int j = 0; j < count[i]; j++) {
