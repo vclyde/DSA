@@ -16,7 +16,7 @@ public class CountingSort {
     public static void countingSort(int[] n) {
 
         int max = n[0], min = 0;
-        // Find the maximal number
+        // Find the maximal number and minimal number
         for (int i = 1; i < n.length; i++) {
             if (n[i] > max) {
                 max = n[i];
@@ -48,6 +48,7 @@ public class CountingSort {
             }
         }
 
+        // For positive numbers
         for (int i = 0; i < pos.length; i++) {
             // Loop each pos of number i
             for (int j = 0; j < pos[i]; j++) {
