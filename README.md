@@ -1,2 +1,2 @@
 # DSA
-Data Structures and Algorithms study in C, C++ and Java
+Data Structures and Algorithms study using Java
