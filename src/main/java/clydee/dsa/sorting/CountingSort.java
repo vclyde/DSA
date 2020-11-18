@@ -3,24 +3,20 @@ package clydee.dsa.sorting;
 import java.util.Arrays;
 
 /**
- *
  * @author Clyde Velasquez
  */
 public class CountingSort {
-	
+
     public static void main(String[] args) {
 
-        int[] n = {11, 7, 9, 1, 2, 23, 5, 1, -1, -5, 0, -1};
+        int[] n = Util.array();
+        System.out.println("Counting sort");
         System.out.println("Before: " + Arrays.toString(n));
-		long start = System.nanoTime();
         countingSort(n);
-		long end = System.nanoTime();
-        System.out.println("After : " + Arrays.toString(n));
-		System.out.println(start + " " + end);
-		System.out.println("Running time: " + (end - start));
+        System.out.println("After: " + Arrays.toString(n));
     }
 
-    // Counting sort for positive int
+    // Counting sort
     public static void countingSort(int[] n) {
 
         int max = n[0], min = 0;
@@ -50,7 +46,7 @@ public class CountingSort {
 
         int k = 0;
         // For negative numbers if there are any
-        for (int i = 0; i < neg.length; i++) {
+        for (int i = neg.length - 1; i >= 0; i--) {
             for (int j = 0; j < neg[i]; j++) {
                 n[k++] = -i;
             }

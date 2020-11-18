@@ -10,9 +10,14 @@ public class InsertionSort {
 	
     public static void main(String[] args) {
 
-        int[] n = {11, 7, 9, 1, 2, 23, 5};
+        int[] n = Util.array();
+        System.out.println("Insertion sort");
         System.out.println("Before: " + Arrays.toString(n));
+        insertionSort(n);
+        System.out.println("After: " + Arrays.toString(n));
+    }
 
+    public static void insertionSort(int[] n) {
         // Declares i and j here
         for (int i = 1, j; i < n.length; i++) {
             int current = n[i]; // n[1] - starts at index 1
@@ -27,7 +32,5 @@ public class InsertionSort {
             // Use j
             n[j] = current;
         }
-
-        System.out.println("After: " + Arrays.toString(n));
     }
 }
