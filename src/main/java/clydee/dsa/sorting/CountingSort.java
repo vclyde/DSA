@@ -1,4 +1,4 @@
-package com.clydee.dsa.sorting;
+package clydee.dsa.sorting;
 
 import java.util.Arrays;
 
@@ -12,8 +12,12 @@ public class CountingSort {
 
         int[] n = {11, 7, 9, 1, 2, 23, 5, 1, -1, -5, 0, -1};
         System.out.println("Before: " + Arrays.toString(n));
+		long start = System.nanoTime();
         countingSort(n);
+		long end = System.nanoTime();
         System.out.println("After : " + Arrays.toString(n));
+		System.out.println(start + " " + end);
+		System.out.println("Running time: " + (end - start));
     }
 
     // Counting sort for positive int
