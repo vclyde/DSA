@@ -5,6 +5,7 @@
     <artifactId>dsa</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
+	<name>DSA</name>
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/junit/junit -->
 		<dependency>
