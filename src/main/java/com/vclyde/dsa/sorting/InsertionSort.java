@@ -1,4 +1,4 @@
-package clydee.dsa.sorting;
+package com.vclyde.dsa.sorting;
 
 import java.util.Arrays;
 
@@ -6,18 +6,18 @@ import java.util.Arrays;
  *
  * @author Clyde Velasquez
  */
-public class SelectionSort {
+public class InsertionSort {
 	
     public static void main(String[] args) {
 
         int[] n = Util.array();
-        System.out.println("Selection sort");
+        System.out.println("Insertion sort");
         System.out.println("Before: " + Arrays.toString(n));
-        selectionSort(n);
+        insertionSort(n);
         System.out.println("After: " + Arrays.toString(n));
     }
 
-    public static void selectionSort(int[] n) {
+    public static void insertionSort(int[] n) {
         // Declares i and j here
         for (int i = 1, j; i < n.length; i++) {
             int current = n[i]; // n[1] - starts at index 1

@@ -1,4 +1,4 @@
-package clydee.dsa.sorting;
+package com.vclyde.dsa.sorting;
 
 import java.util.Arrays;
 

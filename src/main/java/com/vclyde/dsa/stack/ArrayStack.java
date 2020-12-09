@@ -1,4 +1,4 @@
-package clydee.dsa.stack;
+package com.vclyde.dsa.stack;
 
 /**
  *

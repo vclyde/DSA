@@ -1,4 +1,4 @@
-package clydee.dsa.queue;
+package com.vclyde.dsa.queue;
 
 /**
  *
