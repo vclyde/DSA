@@ -28,7 +28,7 @@ public final class CountingSort {
         int[] pos = new int[max + 1];
         int[] neg = new int[(min * -1) + 1];
 
-        // pos the frequencies of each number
+        // Count the occurrences/frequency of numbers
         for (int value : n) {
             if (value >= 0) {
                 pos[value]++;
