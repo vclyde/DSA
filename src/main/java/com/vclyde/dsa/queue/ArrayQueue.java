@@ -1,88 +1,31 @@
 package com.vclyde.dsa.queue;
 
+import com.vclyde.dsa.interfaces.Queue;
+
 /**
  *
  * @author Clyde Velasquez
+ * @param <E>
  */
-public class ArrayQueue {
-	
-    private final int[] queue;
-    private int head;
-    private int tail;
-    private int count;
+public class ArrayQueue<E> implements Queue<E> {
 
-    private final int n;
+	@Override
+	public void enqueue(E item) {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
 
-    public static void main(String[] args) {
+	@Override
+	public E dequeue() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
 
-        ArrayQueue q = new ArrayQueue(5);
-        q.enqueue(1);
-        q.enqueue(2);
-        q.enqueue(3);
-        q.enqueue(4);
-        q.enqueue(5);
-        System.out.println(q);
-        System.out.println("Dequeue: " + q.dequeue());
-        System.out.println(q);
-        System.out.println("Dequeue: " + q.dequeue());
-        System.out.println(q);
-        System.out.println("Dequeue: " + q.dequeue());
-        System.out.println(q);
-        System.out.println("Dequeue: " + q.dequeue());
-        System.out.println(q);
-        System.out.println("Dequeue: " + q.dequeue());
-        System.out.println(q);
-        System.out.println("Dequeue: " + q.dequeue());
-        System.out.println(q);
-        q.enqueue(5);
-        System.out.println(q);
-        q.enqueue(1000);
-        System.out.println(q);
-        q.enqueue(48);
-        System.out.println(q);
-        q.dequeue();
-        System.out.println(q);
+	@Override
+	public int size() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
 
-    }
-
-    public ArrayQueue(int length) {
-        queue = new int[length];
-        head = tail = 0;
-        n = length;
-        count = 0;
-    }
-
-    public void enqueue(int value) {
-        if (count <  n) {
-            queue[tail] = value;
-            tail = (tail + 1) % n;
-            count++;
-        } else {
-            System.out.println("Queue is full!");
-        }
-    }
-
-    public int dequeue() {
-        if ((count - 1) < 0) {
-            System.out.println("Queue is empty!");
-            return -1;
-        }
-        head = head % n;
-        count--;
-        return queue[head++];
-    }
-
-    public boolean isEmpty() {
-        return head == tail;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        int h = head;
-        for (int i = 0; i < count; i++) {
-            sb.append(queue[(h++ % n)]).append(" ");
-        }
-        return sb.toString();
-    }
+	@Override
+	public void clear() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
 }

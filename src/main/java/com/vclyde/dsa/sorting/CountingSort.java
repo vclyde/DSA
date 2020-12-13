@@ -1,23 +1,16 @@
 package com.vclyde.dsa.sorting;
 
-import java.util.Arrays;
-
 /**
  * @author Clyde Velasquez
  */
-public class CountingSort {
-
-    public static void main(String[] args) {
-
-        int[] n = Util.array();
-        System.out.println("Counting sort");
-        System.out.println("Before: " + Arrays.toString(n));
-        countingSort(n);
-        System.out.println("After: " + Arrays.toString(n));
-    }
-
+public final class CountingSort {
+	
+	private CountingSort() {
+		
+	}
+	
     // Counting sort
-    public static void countingSort(int[] n) {
+    public static void sort(int[] n) {
 
         int max = n[0], min = 0;
         // Find the maximal number and minimal number

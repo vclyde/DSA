@@ -1,21 +1,47 @@
 package com.vclyde.dsa.sorting;
 
-public class Util {
+import java.util.Arrays;
 
-    // Random numbers ranging from -99 to 1000
-    // From https://www.random.org
-    private final static int[] array100 = {140, 830, 392, 941, 357, 136, 200, 15, 308, -55,
-            988, 20, 110, 711, 677, -79, 838, 76, 999, 926,
-            860, -81, 379, -10, 508, 330, 479, 298, 784, 25,
-            997, 537, 696, 130, 828, 277, 139, 735, 918, 242,
-            498, 465, 466, 810, 119, 68, 491, 705, 281, -60,
-            817, 522, 115, 660, 48, 478, 929, 199, 57, 74,
-            62, 921, 588, 818, -41, 385, 557, 191, 349, 332,
-            258, 726, 398, 676, -58, 812, 840, 789, 61, 534,
-            325, 604, 766, 336, 884, -83, 541, -22, 905, 401,
-            738, 35, 400, 54, 241, 235, 872, 626, -85, 490};
+public final class Util {
+	
+	private Util() { }
 
-    public static int[] array() {
-        return array100.clone();
-    }
+	// Random numbers ranging from -99 to 100
+	// From https://www.random.org
+	private final static int[] arrayint = {
+		58, 52, 5, -23, -6, 13, 48, -48, 83, -77,
+		-5, -76, 46, 84, -20, -46, 7, -31, -17, 23,
+		-57, 59, 94, -8, -92, 95, -58, 57, 41, -61,
+		-19, -98, -99, 63, 9, 60, 73, -86, -82, -55,
+		17, 69, -12, -29, -96, 18, -7, 21, 65, -13
+	};
+	
+	private final static Integer[] arrayInteger = {
+		58, 52, 5, -23, -6, 13, 48, -48, 83, -77,
+		-5, -76, 46, 84, -20, -46, 7, -31, -17, 23,
+		-57, 59, 94, -8, -92, 95, -58, 57, 41, -61,
+		-19, -98, -99, 63, 9, 60, 73, -86, -82, -55,
+		17, 69, -12, -29, -96, 18, -7, 21, 65, -13
+	};
+
+	public static int[] unsortedint() {
+		return arrayint.clone();
+	}
+	
+	public static Integer[] unsortedInteger() {
+		return arrayInteger.clone();
+	}
+	
+	public static int[] sortedint() {
+		int[] clone = arrayint.clone();
+		Arrays.sort(clone);
+		return clone;
+	}
+	
+	public static Integer[] sortedInteger() {
+		Integer[] clone = arrayInteger.clone();
+		Arrays.sort(clone);
+		return clone;
+	}
+	
 }

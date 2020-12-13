@@ -1,36 +1,31 @@
 package com.vclyde.dsa.sorting;
 
-import java.util.Arrays;
-
 /**
+ * Insertion sort algorithm
  *
  * @author Clyde Velasquez
  */
-public class InsertionSort {
-	
-    public static void main(String[] args) {
+public final class InsertionSort {
 
-        int[] n = Util.array();
-        System.out.println("Insertion sort");
-        System.out.println("Before: " + Arrays.toString(n));
-        insertionSort(n);
-        System.out.println("After: " + Arrays.toString(n));
-    }
+	private InsertionSort() {
 
-    public static void insertionSort(int[] n) {
-        // Declares i and j here
-        for (int i = 1, j; i < n.length; i++) {
-            int current = n[i]; // n[1] - starts at index 1
+	}
 
-            // j starts at 1
-            // condition checks if j is greater than 0 and compares current
-            // to its previous element in the array
-            for (j = i; j > 0 && current < n[j - 1]; j--) {
-                n[j] = n[j - 1];
-            }
+	public static <T extends Comparable<T>> void sort(T[] t) {
+		// Declares i and j here
+		for (int i = 1; i < t.length; i++) {
+			T current = t[i]; // t[1] - starts at index 1
 
-            // Use j
-            n[j] = current;
-        }
-    }
+			// j starts at 1
+			// condition checks if j is greater than 0 and compares current
+			// to its previous element in the array
+			int j;
+			for (j = i; j > 0 && (current.compareTo(t[j - 1]) < 0); j--) {
+				t[j] = t[j - 1];
+			}
+
+			// Use j
+			t[j] = current;
+		}
+	}
 }

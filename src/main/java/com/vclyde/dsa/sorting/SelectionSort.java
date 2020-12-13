@@ -1,36 +1,30 @@
 package com.vclyde.dsa.sorting;
 
-import java.util.Arrays;
-
 /**
+ * Selection sort algorithm
  *
  * @author Clyde Velasquez
  */
-public class SelectionSort {
-	
-    public static void main(String[] args) {
+public final class SelectionSort {
 
-        int[] n = Util.array();
-        System.out.println("Selection sort");
-        System.out.println("Before: " + Arrays.toString(n));
-        selectionSort(n);
-        System.out.println("After: " + Arrays.toString(n));
-    }
+	private SelectionSort() {
 
-    public static void selectionSort(int[] n) {
-        // Declares i and j here
-        for (int i = 1, j; i < n.length; i++) {
-            int current = n[i]; // n[1] - starts at index 1
+	}
 
-            // j starts at 1
-            // condition checks if j is greater than 0 and compares current
-            // to its previous element in the array
-            for (j = i; j > 0 && current < n[j - 1]; j--) {
-                n[j] = n[j - 1];
-            }
+	public static <T extends Comparable<T>> void sort(T[] t) {
 
-            // Use j
-            n[j] = current;
-        }
-    }
+		for (int i = 0, minimal; i < t.length - 1; i++) {
+			minimal = i;
+			for (int j = i + 1; j < t.length; j++) {
+				if (t[j].compareTo(t[minimal]) < 0) {
+					minimal = j;
+				}
+			}
+
+			// Swap values
+			T temp = t[i];
+			t[i] = t[minimal];
+			t[minimal] = temp;
+		}
+	}
 }
