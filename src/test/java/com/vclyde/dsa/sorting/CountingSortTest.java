@@ -1,10 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.vclyde.dsa.sorting;
 
+import java.util.Arrays;
+import org.junit.Assert;
 import org.junit.Test;
 
 /**
@@ -13,11 +10,13 @@ import org.junit.Test;
  */
 public class CountingSortTest {
 	
-	public CountingSortTest() {
-	}
-
 	@Test
-	public void testSomeMethod() {
+	public void testSort() {
+		int[] a = Util.unsortedints();
+		// Verify if the array is not sorted 
+		Assert.assertTrue(!Arrays.equals(Util.sortedints(), a));
+		CountingSort.sort(a);
+		Assert.assertArrayEquals(Util.sortedints(), a);
 	}
 	
 }
