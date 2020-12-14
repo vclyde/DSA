@@ -11,4 +11,6 @@ public interface Collection<E> {
 	int size();
 	// Removes all values from the collection
 	void clear();
+	// 
+	boolean isEmpty();
 }

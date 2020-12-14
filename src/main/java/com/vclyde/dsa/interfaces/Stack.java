@@ -6,10 +6,11 @@ package com.vclyde.dsa.interfaces;
  * @param <E>
  */
 public interface Stack<E> extends Collection<E> {
-	
-	// Add element to the top of the stack
+
+	// Adds element to the top of the stack
 	void push(E e);
 	// Removes an element from the top of the stack
 	E pop();
-
+	// Returns the top element of the stack without removing it
+	E top();
 }
