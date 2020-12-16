@@ -4,85 +4,77 @@ import com.vclyde.dsa.interfaces.Stack;
 
 /**
  *
- * An array-based implementation of stack
+ * An array-based implementation of stack with fixed size
  *
  * @author Clyde Velasquez
  * @param <E> Generic type
  */
 public class ArrayStack<E> implements Stack<E> {
 
-	private static final int GROW_SIZE = 20;
+	private static final int DEFAULT_CAPACITY = 1000;
 
 	private Object[] stack;
-	private int count;
 	private int topIndex;
 
 	public ArrayStack() {
-		this(GROW_SIZE);
+		this(DEFAULT_CAPACITY);
 	}
 
-	public ArrayStack(int initialSize) {
-		stack = new Object[initialSize];
-		count = 0;
+	public ArrayStack(int capacity) {
+		stack = new Object[capacity];
 		topIndex = -1;
 	}
 
 	@Override
 	@SuppressWarnings("unchecked")
 	public E top() {
-		if (topIndex > -1) {
-			return (E) stack[topIndex];
-		} else {
-			throw new ArrayIndexOutOfBoundsException("Stack is empty!");
-		}
+		if (isEmpty()) {
+			return null;
+		} 
+		return (E) stack[topIndex];
 	}
 
 	@Override
 	public int size() {
-		return count;
+		return topIndex + 1;
 	}
 
 	@Override
 	public void clear() {
-		count = 0;
 		topIndex = -1;
+		for (int i = 0; i < stack.length; i++) {
+			stack[i] = null;
+		}
 	}
 
 	@Override
 	public void push(E e) {
-		if (count <= stack.length && (topIndex + 1) < stack.length) {
+		if (size() < stack.length) {
 			stack[++topIndex] = e;
-			count++;
 		} else {
-			Object[] newStack = new Object[stack.length + GROW_SIZE];
-			System.arraycopy(stack, 0, newStack, 0, stack.length);
-			stack = newStack;
-			push(e);
+			throw new ArrayIndexOutOfBoundsException("Stack is full! Current size is " + size() + "!");
 		}
 	}
 
 	@Override
 	@SuppressWarnings("unchecked")
 	public E pop() {
-		if (count > 0) {
-			count--;
-			return (E) stack[topIndex--];
-		} else {
-			throw new ArrayIndexOutOfBoundsException("Stack is empty!");
+		if (isEmpty()) {
+			return null;
 		}
+		return (E) stack[topIndex--];
 	}
 
 	@Override
 	public String toString() {
-		System.out.println("array size: " + stack.length);
 		StringBuilder sb = new StringBuilder();
 
 		sb.append("Stack").append("\n");
-		if (count == 0) {
+		if (isEmpty()) {
 			sb.append("***EMPTY***").append("\n");
 		}
 
-		for (int i = count - 1; i > -1; i--) {
+		for (int i = topIndex; i > -1; i--) {
 			sb.append(stack[i]).append("\n");
 		}
 		sb.append("-----");
@@ -92,6 +84,6 @@ public class ArrayStack<E> implements Stack<E> {
 
 	@Override
 	public boolean isEmpty() {
-		return count == 0;
+		return topIndex == -1;
 	}
 }
