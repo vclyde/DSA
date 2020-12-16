@@ -3,13 +3,14 @@ package com.vclyde.dsa.interfaces;
 /**
  *
  * @author Clyde Velasquez
- * @param <E>
+ * @param <E> Generic type
  */
 public interface Queue<E> extends Collection<E> {
 	
-	// Add new element to the 
-	void enqueue(E item);
-	
-	// Removes element
+	// Adds element e to the back of the queue
+	void enqueue(E e);
+	// Removes and returns the first element from the queue
 	E dequeue();
+	// Returns the first element of the queue without removing it
+	E first();
 }

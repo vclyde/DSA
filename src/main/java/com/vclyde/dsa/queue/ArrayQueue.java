@@ -4,33 +4,95 @@ import com.vclyde.dsa.interfaces.Queue;
 
 /**
  *
+ * An array-based implementation of queue with fixed size (Circular buffer)
+ *
  * @author Clyde Velasquez
- * @param <E>
+ * @param <E> Generic type
  */
 public class ArrayQueue<E> implements Queue<E> {
 
-	@Override
-	public void enqueue(E item) {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	private static final int DEFAULT_CAPACITY = 1000;
+
+	private final Object[] queue;
+	private int count;
+	private int front;
+
+	public ArrayQueue() {
+		this(DEFAULT_CAPACITY);
+	}
+
+	public ArrayQueue(int capacity) {
+		queue = new Object[capacity];
+		count = 0;
+		front = 0;
 	}
 
 	@Override
+	public void enqueue(E e) {
+		if (count == queue.length) {
+			throw new ArrayIndexOutOfBoundsException("Queue is full!");
+		}
+		int next = (front + count) % queue.length;
+		queue[next] = e;
+		count++;
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
 	public E dequeue() {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+		if (isEmpty()) {
+			return null;
+		}
+
+		E element = (E) queue[front];
+		front = (front + 1) % queue.length;
+		count--;
+		return element;
 	}
 
 	@Override
 	public int size() {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+		return count;
 	}
 
 	@Override
 	public void clear() {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+		count = 0;
+		front = 0;
+		for (int i = 0; i < queue.length; i++) {
+			queue[i] = null;
+		}
 	}
 
 	@Override
 	public boolean isEmpty() {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+		return count == 0;
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public E first() {
+		return (E) queue[front];
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("[");
+
+		int ctr = 0;
+		int index = front;
+		while (ctr < count) {
+			sb.append(queue[index]);
+			index = (index + 1) % queue.length;
+			ctr++;
+			if (ctr < count) {
+				sb.append(", ");
+			}
+		}
+
+		sb.append("]");
+		return sb.toString();
 	}
 }
