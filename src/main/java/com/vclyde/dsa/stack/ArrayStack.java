@@ -2,6 +2,8 @@ package com.vclyde.dsa.stack;
 
 import com.vclyde.dsa.interfaces.Stack;
 
+import java.util.Arrays;
+
 /**
  *
  * An array-based implementation of stack with fixed size
@@ -13,7 +15,7 @@ public class ArrayStack<E> implements Stack<E> {
 
 	private static final int DEFAULT_CAPACITY = 1000;
 
-	private Object[] stack;
+	private final Object[] stack;
 	private int topIndex;
 
 	public ArrayStack() {
@@ -42,9 +44,7 @@ public class ArrayStack<E> implements Stack<E> {
 	@Override
 	public void clear() {
 		topIndex = -1;
-		for (int i = 0; i < stack.length; i++) {
-			stack[i] = null;
-		}
+		Arrays.fill(stack, null);
 	}
 
 	@Override

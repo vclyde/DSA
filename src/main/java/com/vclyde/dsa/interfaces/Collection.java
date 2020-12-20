@@ -3,7 +3,7 @@ package com.vclyde.dsa.interfaces;
 /**
  *
  * @author Clyde Velasquez
- * @param <E>
+ * @param <E> Generic type
  */
 public interface Collection<E> {
 	

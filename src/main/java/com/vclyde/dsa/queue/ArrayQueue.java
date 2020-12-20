@@ -2,6 +2,8 @@ package com.vclyde.dsa.queue;
 
 import com.vclyde.dsa.interfaces.Queue;
 
+import java.util.Arrays;
+
 /**
  *
  * An array-based implementation of queue with fixed size (Circular buffer)
@@ -60,9 +62,7 @@ public class ArrayQueue<E> implements Queue<E> {
 	public void clear() {
 		count = 0;
 		front = 0;
-		for (int i = 0; i < queue.length; i++) {
-			queue[i] = null;
-		}
+		Arrays.fill(queue, null);
 	}
 
 	@Override
