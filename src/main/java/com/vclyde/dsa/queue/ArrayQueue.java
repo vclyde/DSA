@@ -1,12 +1,13 @@
 package com.vclyde.dsa.queue;
 
 import com.vclyde.dsa.interfaces.Queue;
-
 import java.util.Arrays;
 
 /**
  *
  * An array-based implementation of queue with fixed size (Circular buffer)
+ * https://en.wikipedia.org/wiki/Circular_buffer
+ * First-in, first-out
  *
  * @author Clyde Velasquez
  * @param <E> Generic type

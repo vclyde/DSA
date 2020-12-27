@@ -3,6 +3,7 @@ package com.vclyde.dsa.list;
 import com.vclyde.dsa.interfaces.List;
 
 /**
+ * SinglyLinkedList
  *
  * @author Clyde Velasquez
  * @param <E> Generic Type
@@ -99,8 +100,8 @@ public final class SinglyLinkedList<E> implements List<E> {
 		E element = head.element;
 		head = head.next;
 		--count;
-
-		if (count == 0) {
+		// If count is zero then tail is also null
+		if (count == 0) { 
 			tail = null;
 		}
 

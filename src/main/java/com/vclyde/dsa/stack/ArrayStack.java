@@ -1,12 +1,13 @@
 package com.vclyde.dsa.stack;
 
 import com.vclyde.dsa.interfaces.Stack;
-
 import java.util.Arrays;
 
 /**
  *
  * An array-based implementation of stack with fixed size
+ * 
+ * Last-in, first-out
  *
  * @author Clyde Velasquez
  * @param <E> Generic type
