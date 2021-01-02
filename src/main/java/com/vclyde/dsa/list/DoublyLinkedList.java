@@ -17,9 +17,7 @@ public class DoublyLinkedList<E> implements List<E> {
 		private Node<E> prev;
 
 		public Node(E e) {
-			this.element = e;
-			this.next = null;
-			this.prev = null;
+			this(e, null, null);
 		}
 
 		public Node(E e, Node<E> previous, Node<E> next) {
@@ -58,28 +56,14 @@ public class DoublyLinkedList<E> implements List<E> {
 
 	@Override
 	public void addFirst(E e) {
-		// Previous -> header
-		// Next -> header.next
-		Node<E> newest = new Node<>(e, this.header, this.header.next);
-
-		// this.header.next.prev = newest;
-		// this.header.next = newest;
-		this.header.next = newest;
-		newest.next.prev = newest;
-		++count;
+		// Newest must be after the header sentinel so set predecessor to header
+		addBetween(e, this.header, this.header.next);
 	}
 
 	@Override
 	public void addLast(E e) {
-		// Previous -> trailer.prev
-		// Next -> trailer
-		Node<E> newest = new Node<>(e, this.trailer.prev, this.trailer);
-
-		// this.trailer.prev.next = newest;
-		// this.trailer.prev = newest;
-		this.trailer.prev = newest;
-		newest.prev.next = newest;
-		++count;
+		// Newest node must be before the trailer sentinel so set successor to trailer
+		addBetween(e, this.trailer.prev, this.trailer);
 	}
 
 	@Override
@@ -88,16 +72,7 @@ public class DoublyLinkedList<E> implements List<E> {
 			return null;
 		}
 
-		// The node after the header sentinel
-		Node<E> removed = this.header.next;
-		// removed.prev.next = removed.next;
-		// removed.next.prev = removed.prev;
-
-		this.header.next = removed.next;
-		removed.next.prev = this.header;
-		--count;
-
-		return removed.element;
+		return remove(this.header.next);
 	}
 
 	@Override
@@ -105,14 +80,8 @@ public class DoublyLinkedList<E> implements List<E> {
 		if (isEmpty()) {
 			return null;
 		}
-		
-		// The node before the trailer sentinel
-		Node<E> removed = this.trailer.prev;
-		this.trailer.prev = removed.prev;
-		removed.prev.next = this.trailer;
-		--count;
-		
-		return removed.element;
+
+		return remove(this.trailer.prev);
 	}
 
 	@Override
@@ -130,6 +99,29 @@ public class DoublyLinkedList<E> implements List<E> {
 	@Override
 	public boolean isEmpty() {
 		return count == 0;
+	}
+
+	private void addBetween(E e, Node<E> predecessor, Node<E> successor) {
+
+		Node<E> newest = new Node<>(e, predecessor, successor);
+
+		predecessor.next = newest;
+		successor.prev = newest;
+
+		++count;
+	}
+
+	private E remove(Node<E> node) {
+
+		Node<E> predecessor = node.prev;
+		Node<E> successor = node.next;
+
+		predecessor.next = successor;
+		successor.prev = predecessor;
+
+		--count;
+
+		return node.element;
 	}
 
 	@Override
@@ -152,7 +144,7 @@ public class DoublyLinkedList<E> implements List<E> {
 	/**
 	 * Display in reverse order
 	 *
-	 * @return String in reverse order
+	 * @return List as String in reverse order
 	 */
 	public String reverse() {
 		StringBuilder sb = new StringBuilder();
