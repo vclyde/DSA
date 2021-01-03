@@ -27,8 +27,8 @@ public class DoublyLinkedList<E> implements List<E> {
 		}
 	}
 
-	private Node<E> header; // header sentinel
-	private Node<E> trailer; // trailer sentinel
+	private final Node<E> header; // header sentinel
+	private final Node<E> trailer; // trailer sentinel
 	private int count;
 
 	public DoublyLinkedList() {
