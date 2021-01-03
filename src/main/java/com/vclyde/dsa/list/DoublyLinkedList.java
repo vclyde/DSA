@@ -5,27 +5,10 @@ import com.vclyde.dsa.interfaces.List;
 /**
  * DoublyLinkedList
  *
- * @author Clyde Velasquez
  * @param <E> Generic type
+ * @author Clyde Velasquez
  */
 public class DoublyLinkedList<E> implements List<E> {
-
-	private static class Node<E> {
-
-		private E element;
-		private Node<E> next;
-		private Node<E> prev;
-
-		public Node(E e) {
-			this(e, null, null);
-		}
-
-		public Node(E e, Node<E> previous, Node<E> next) {
-			this.element = e;
-			this.prev = previous;
-			this.next = next;
-		}
-	}
 
 	private final Node<E> header; // header sentinel
 	private final Node<E> trailer; // trailer sentinel
@@ -160,5 +143,22 @@ public class DoublyLinkedList<E> implements List<E> {
 		}
 		sb.append("}");
 		return sb.toString();
+	}
+
+	private static class Node<E> {
+
+		private E element;
+		private Node<E> next;
+		private Node<E> prev;
+
+		public Node(E e) {
+			this(e, null, null);
+		}
+
+		public Node(E e, Node<E> previous, Node<E> next) {
+			this.element = e;
+			this.prev = previous;
+			this.next = next;
+		}
 	}
 }

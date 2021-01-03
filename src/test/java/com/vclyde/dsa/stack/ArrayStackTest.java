@@ -4,7 +4,6 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- *
  * @author Clyde Velasquez
  */
 public class ArrayStackTest {
@@ -38,15 +37,15 @@ public class ArrayStackTest {
 		stack.pop();
 		stack.pop();
 		Assert.assertEquals(7, stack.size());
-		
+
 		stack.pop();
 		stack.pop();
 		stack.pop();
 		Assert.assertEquals(4, stack.top().intValue());
-		
+
 		stack.clear();
 		Assert.assertEquals(0, stack.size());
-		
+
 		System.out.println(stack);
 	}
 }

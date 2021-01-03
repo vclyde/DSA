@@ -4,7 +4,6 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- *
  * @author Clyde Velasquez
  */
 public class SinglyLinkedListTest {
@@ -60,5 +59,5 @@ public class SinglyLinkedListTest {
 		Assert.assertNull(intList.first());
 		Assert.assertNull(intList.last());
 	}
-	
+
 }

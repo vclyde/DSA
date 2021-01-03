@@ -5,25 +5,10 @@ import com.vclyde.dsa.interfaces.List;
 /**
  * SinglyLinkedList
  *
- * @author Clyde Velasquez
  * @param <E> Generic Type
+ * @author Clyde Velasquez
  */
 public final class SinglyLinkedList<E> implements List<E> {
-
-	private static class Node<E> {
-
-		private E element;
-		private Node<E> next;
-
-		public Node(E element) {
-			this(element, null);
-		}
-
-		public Node(E element, Node<E> next) {
-			this.element = element;
-			this.next = next;
-		}
-	}
 
 	private Node<E> head;
 	private Node<E> tail;
@@ -101,7 +86,7 @@ public final class SinglyLinkedList<E> implements List<E> {
 		head = head.next;
 		--count;
 		// If count is zero then tail is also null
-		if (count == 0) { 
+		if (count == 0) {
 			tail = null;
 		}
 
@@ -142,5 +127,20 @@ public final class SinglyLinkedList<E> implements List<E> {
 		}
 		sb.append("}");
 		return sb.toString();
+	}
+
+	private static class Node<E> {
+
+		private E element;
+		private Node<E> next;
+
+		public Node(E element) {
+			this(element, null);
+		}
+
+		public Node(E element, Node<E> next) {
+			this.element = element;
+			this.next = next;
+		}
 	}
 }

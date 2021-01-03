@@ -1,16 +1,16 @@
 package com.vclyde.dsa.stack;
 
 import com.vclyde.dsa.interfaces.Stack;
+
 import java.util.Arrays;
 
 /**
- *
  * An array-based implementation of stack with fixed size
- * 
+ * <p>
  * Last-in, first-out
  *
- * @author Clyde Velasquez
  * @param <E> Generic type
+ * @author Clyde Velasquez
  */
 public class ArrayStack<E> implements Stack<E> {
 
@@ -33,7 +33,7 @@ public class ArrayStack<E> implements Stack<E> {
 	public E top() {
 		if (isEmpty()) {
 			return null;
-		} 
+		}
 		return (E) stack[topIndex];
 	}
 

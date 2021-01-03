@@ -5,7 +5,6 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- *
  * @author Clyde Velasquez
  */
 public class ArrayQueueTest {
@@ -40,17 +39,17 @@ public class ArrayQueueTest {
 		} catch (ArrayIndexOutOfBoundsException e) {
 			System.out.println(e.getMessage());
 		}
-		
+
 		queue.dequeue();
 		queue.dequeue();
 		queue.dequeue();
 		Assert.assertEquals(5, queue.first().intValue());
 		Assert.assertEquals(7, queue.size());
-		
+
 		System.out.println(queue);
 		queue.clear();
 		Assert.assertTrue(queue.isEmpty());
-		
+
 	}
 
 }
