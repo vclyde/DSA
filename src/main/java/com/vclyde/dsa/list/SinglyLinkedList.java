@@ -116,6 +116,108 @@ public final class SinglyLinkedList<E> implements List<E> {
 	}
 
 	@Override
+	public E get(int i) {
+		if (isEmpty()) {
+			return null;
+		}
+
+		if (i >= count || i < 0) {
+			throw new IllegalArgumentException("Illegal parameter i");
+		}
+
+		Node<E> iterator = head;
+		E el = iterator.element;
+		int pos = 0;
+		while (pos < i) {
+			pos++;
+			iterator = iterator.next;
+			el = iterator.element;
+		}
+
+		return el;
+	}
+
+	@Override
+	public void set(int i, E e) {
+		if (isEmpty()) {
+			throw new IndexOutOfBoundsException("Empty list");
+		}
+
+		if (i >= count || i < 0) {
+			throw new IllegalArgumentException("Illegal parameter i -> " + i);
+		}
+
+		Node<E> iterator = head;
+		int pos = 0;
+		while (pos < i) {
+			pos++;
+			iterator = iterator.next;
+		}
+		iterator.element = e;
+	}
+
+	@Override
+	public void add(int i, E e) {
+		if (i > count || i < 0) {
+			throw new IllegalArgumentException("Illegal parameter i");
+		}
+
+		if (i == 0) {
+			addFirst(e);
+			return;
+		} else if (i == count) {
+			addLast(e);
+			return;
+		}
+
+		Node<E> iterator = head;
+		Node<E> prev = iterator;
+		int pos = 0;
+		while (pos < i) {
+			prev = iterator;
+			pos++;
+			iterator = iterator.next;
+		}
+
+		prev.next = new Node<>(e, prev.next);
+		++count;
+	}
+
+	@Override
+	public E remove(int i) {
+
+		if (isEmpty()) {
+			return null;
+		}
+
+		if (i == 0) {
+			return removeFirst();
+		} else if (i == (count - 1)) {
+			return removeLast();
+		}
+
+		if (i >= count || i < 0) {
+			throw new IllegalArgumentException("Illegal parameter i");
+		}
+
+		Node<E> iterator = head;
+		Node<E> prev = iterator;
+		int pos = 0;
+		while (pos < i) {
+			prev = iterator;
+			pos++;
+			iterator = iterator.next;
+		}
+
+		E el = iterator.element;
+		prev.next = iterator.next;
+		iterator.next = null;
+		--count;
+
+		return el;
+	}
+
+	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("{");

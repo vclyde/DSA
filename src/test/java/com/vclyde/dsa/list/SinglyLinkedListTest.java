@@ -9,55 +9,58 @@ import org.junit.Test;
 public class SinglyLinkedListTest {
 
 	@Test
-	public void linkedListTest() {
-		SinglyLinkedList<Integer> intList = new SinglyLinkedList<>();
+	public void test() {
+		SinglyLinkedList<Integer> list = new SinglyLinkedList<>();
+		Assert.assertTrue(list.isEmpty());
 
-		Assert.assertEquals(0, intList.size());
-		Assert.assertNull(intList.first());
-		Assert.assertNull(intList.last());
+		// Test addFirst
+		list.addFirst(1);
+		list.addFirst(2);
+		list.addFirst(3);
+		Assert.assertEquals(3, list.size());
+		Assert.assertEquals(Integer.valueOf(3), list.first());
 
-		Assert.assertNull(intList.removeFirst());
-		Assert.assertNull(intList.removeLast());
+		// Test addLast
+		list.addLast(4);
+		list.addLast(5);
+		list.addLast(6);
+		Assert.assertEquals(6, list.size());
+		Assert.assertEquals(Integer.valueOf(6), list.last());
 
-		intList.addFirst(2020);
-		Assert.assertEquals(1, intList.size());
-		Assert.assertNotNull(intList.first());
-		Assert.assertNotNull(intList.last());
+		// Test removeFirst
+		list.removeFirst();
+		Assert.assertEquals(5, list.size());
+		Assert.assertEquals(Integer.valueOf(2), list.first());
 
-		Integer first = intList.first();
-		Integer last = intList.last();
-		Assert.assertEquals(2020, first.intValue());
-		Assert.assertEquals(2020, last.intValue());
+		// Test removeLast
+		list.removeLast();
+		Assert.assertEquals(4, list.size());
+		Assert.assertEquals(Integer.valueOf(5), list.last());
 
-		intList.addLast(50);
-		System.out.println(intList);
-		last = intList.last();
-		assert last != null;
-		Assert.assertEquals(50, last.intValue());
-		Assert.assertEquals(2, intList.size());
+		// Test add and remove from the front of the list
+		list.add(0, 100);
+		Assert.assertEquals(Integer.valueOf(100), list.first());
+		Assert.assertEquals(Integer.valueOf(100), list.get(0));
+		Assert.assertEquals(5, list.size());
+		Assert.assertEquals(Integer.valueOf(100), list.remove(0));
 
-		intList.addFirst(21);
-		System.out.println(intList);
-		first = intList.first();
-		assert first != null;
-		Assert.assertEquals(21, first.intValue());
-		Assert.assertEquals(3, intList.size());
+		// Test add and remove from the rear of the list
+		list.add(4, 89);
+		Assert.assertEquals(Integer.valueOf(89), list.last());
+		Assert.assertEquals(Integer.valueOf(89), list.get(4));
+		Assert.assertEquals(5, list.size());
+		Assert.assertEquals(Integer.valueOf(89), list.remove(4));
 
-		Integer remove = intList.removeFirst();
-		assert remove != null;
-		Assert.assertEquals(21, remove.intValue());
-		Assert.assertEquals(2, intList.size());
-		System.out.println(intList);
+		// Test add and remove in the middle of the list
+		list.add(2, 1000);
+		Assert.assertEquals(Integer.valueOf(1000), list.get(2));
+		Assert.assertEquals(5, list.size());
+		Assert.assertEquals(Integer.valueOf(1000), list.remove(2));
 
-		remove = intList.removeLast();
-		assert remove != null;
-		Assert.assertEquals(50, remove.intValue());
-		System.out.println(intList);
-
-		intList.clear();
-		Assert.assertEquals(0, intList.size());
-		Assert.assertNull(intList.first());
-		Assert.assertNull(intList.last());
+		list.clear();
+		Assert.assertTrue(list.isEmpty());
+		Assert.assertNull(list.first());
+		Assert.assertNull(list.last());
+		Assert.assertNull(list.get(1));
 	}
-
 }
