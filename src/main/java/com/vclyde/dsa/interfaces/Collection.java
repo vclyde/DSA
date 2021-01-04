@@ -1,6 +1,8 @@
 package com.vclyde.dsa.interfaces;
 
 /**
+ * Collection interface
+ *
  * @param <E> Generic type
  * @author Clyde Velasquez
  */

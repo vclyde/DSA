@@ -1,6 +1,8 @@
 package com.vclyde.dsa.interfaces;
 
 /**
+ * Queue interface
+ *
  * @param <E> Generic type
  * @author Clyde Velasquez
  */

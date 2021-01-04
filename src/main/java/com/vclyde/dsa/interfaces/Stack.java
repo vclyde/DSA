@@ -1,6 +1,8 @@
 package com.vclyde.dsa.interfaces;
 
 /**
+ * Stack interface
+ *
  * @param <E> Generic type
  * @author Clyde Velasquez
  */

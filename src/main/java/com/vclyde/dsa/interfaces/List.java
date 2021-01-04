@@ -1,27 +1,22 @@
 package com.vclyde.dsa.interfaces;
 
 /**
+ * List interface
+ *
  * @param <E> Generic type
  * @author Clyde Velasquez
  */
-public interface List<E> extends Collection<E> {
+public interface List<E> extends Deque<E> {
 
-	// Returns the first element without removing it
-	E first();
+	// Returns the element at the specified index
+	E get(int i);
 
-	// Returns the last element without removing it
-	E last();
+	// Set the value of the element at the specified index
+	void set(int i, E e);
 
-	// Adds a new element to the front of the list
-	void addFirst(E e);
+	// Add new element at a specific index
+	void add(int i, E e);
 
-	// Adds a new element to the end of the list
-	void addLast(E e);
-
-	// Returns and removes the first element of the list
-	E removeFirst();
-
-	// Returns and removes the first element of the list
-	E removeLast();
-
+	// Returns and removes the element at a specific index
+	E remove(int i);
 }
