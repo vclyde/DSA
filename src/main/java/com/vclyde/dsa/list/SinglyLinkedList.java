@@ -103,11 +103,11 @@ public final class SinglyLinkedList<E> implements List<E> {
 		if (head == tail) {
 			head = tail = null;
 		} else {
-			Node<E> i = head;
-			while (i.next != tail) {
-				i = i.next;
+			Node<E> current = head;
+			while (current.next != tail) {
+				current = current.next;
 			}
-			tail = i;
+			tail = current;
 			tail.next = null;
 		}
 		--count;
@@ -116,117 +116,115 @@ public final class SinglyLinkedList<E> implements List<E> {
 	}
 
 	@Override
-	public E get(int i) {
+	public E get(int index) {
 		if (isEmpty()) {
 			return null;
 		}
 
-		if (i >= count || i < 0) {
-			throw new IllegalArgumentException("Illegal parameter i");
+		if (index >= count || index < 0) {
+			throw new IndexOutOfBoundsException("Illegal parameter i");
+		}
+		
+		Node<E> current = head;
+		for (int i = 0; i < index; i++) {
+			current = current.next;
 		}
 
-		Node<E> iterator = head;
-		E el = iterator.element;
-		int pos = 0;
-		while (pos < i) {
-			pos++;
-			iterator = iterator.next;
-			el = iterator.element;
-		}
-
-		return el;
+		return current.element;
 	}
 
 	@Override
-	public void set(int i, E e) {
+	public void set(int index, E e) {
 		if (isEmpty()) {
-			throw new IndexOutOfBoundsException("Empty list");
+			throw new NullPointerException("Empty list");
 		}
 
-		if (i >= count || i < 0) {
-			throw new IllegalArgumentException("Illegal parameter i -> " + i);
+		if (index >= count || index < 0) {
+			throw new IndexOutOfBoundsException("Illegal parameter i -> " + index);
 		}
-
-		Node<E> iterator = head;
-		int pos = 0;
-		while (pos < i) {
-			pos++;
-			iterator = iterator.next;
+		
+		Node<E> current = head;
+		for (int i = 0; i < index; i++) {
+			current = current.next;
 		}
-		iterator.element = e;
+		current.element = e;
 	}
 
 	@Override
-	public void add(int i, E e) {
-		if (i > count || i < 0) {
+	public void add(int index, E e) {
+		if (index > count || index < 0) {
 			throw new IllegalArgumentException("Illegal parameter i");
 		}
 
-		if (i == 0) {
+		if (index == 0) {
 			addFirst(e);
 			return;
-		} else if (i == count) {
+		} else if (index == count) {
 			addLast(e);
 			return;
 		}
-
-		Node<E> iterator = head;
-		Node<E> prev = iterator;
-		int pos = 0;
-		while (pos < i) {
-			prev = iterator;
-			pos++;
-			iterator = iterator.next;
+		
+		Node<E> current = head;
+		Node<E> prev = null;
+		for (int i = 0; i < index; i++) {
+			prev = current;
+			current = current.next;
 		}
-
+		
+		assert prev != null;
 		prev.next = new Node<>(e, prev.next);
 		++count;
 	}
 
 	@Override
-	public E remove(int i) {
+	public E remove(int index) {
 
 		if (isEmpty()) {
 			return null;
 		}
 
-		if (i == 0) {
+		if (index == 0) {
 			return removeFirst();
-		} else if (i == (count - 1)) {
+		} else if (index == (count - 1)) {
 			return removeLast();
 		}
 
-		if (i >= count || i < 0) {
+		if (index >= count || index < 0) {
 			throw new IllegalArgumentException("Illegal parameter i");
 		}
-
-		Node<E> iterator = head;
-		Node<E> prev = iterator;
-		int pos = 0;
-		while (pos < i) {
-			prev = iterator;
-			pos++;
-			iterator = iterator.next;
+		
+		Node<E> current = head;
+		Node<E> prev = null;
+		for (int i = 0; i < index; i++) {
+			prev = current;
+			current = current.next;
 		}
-
-		E el = iterator.element;
-		prev.next = iterator.next;
-		iterator.next = null;
+		
+		assert prev != null;
+		prev.next = current.next;
+		current.next = null;
 		--count;
 
-		return el;
+		return current.element;
 	}
 
+	@Override
+	public void add(E e) {
+		addLast(e);
+	}
+	
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("{");
-		for (Node<E> i = head; i != null; i = i.next) {
-			sb.append(i.element);
-			if (i.next != null) {
+		
+		for (Node<E> current = head; current != null; current = current.next) {
+			sb.append(current.element);
+			if (current.next != null) {
 				sb.append(", ");
 			}
 		}
+		
 		sb.append("}");
 		return sb.toString();
 	}
