@@ -9,14 +9,17 @@ package com.vclyde.dsa.interfaces;
 public interface List<E> extends Deque<E> {
 
 	// Returns the element at the specified index
-	E get(int i);
+	E get(int index);
 
 	// Set the value of the element at the specified index
-	void set(int i, E e);
+	void set(int index, E e);
+	
+	// Add new element
+	void add(E e);
 
 	// Add new element at a specific index
-	void add(int i, E e);
+	void add(int index, E e);
 
 	// Returns and removes the element at a specific index
-	E remove(int i);
+	E remove(int index);
 }
