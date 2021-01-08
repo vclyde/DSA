@@ -113,19 +113,102 @@ public class CircularLinkedList<E> implements List<E> {
 	}
 
 	@Override
+	public void add(E e) {
+		addFirst(e);
+		tail = tail.next;
+	}
+
+	@Override
+	public E get(int index) {
+		if (index >= 0 && index < count) {
+			Node<E> current = tail.next; // head
+			for (int i = 0; i < index; i++) {
+				current = current.next;
+			}
+			return current.element;
+		} else {
+			throw new IndexOutOfBoundsException("Index is out of bounds! List size is " + count);
+		}
+	}
+
+	@Override
+	public void set(int index, E e) {
+		if (index >= 0 && index < count) {
+			Node<E> current = tail.next;
+			for (int i = 0; i < index; i++) {
+				current = current.next;
+			}
+			current.element = e;
+		} else {
+			throw new IndexOutOfBoundsException("Index is out of bounds! List size is " + count);
+		}
+	}
+
+	@Override
+	public void add(int index, E e) {
+
+		if (index == 0) {
+			addFirst(e);
+			return;
+		} else if (index == count) {
+			addLast(e);
+			return;
+		}
+
+		if (index > 0 && index < count) {
+
+			Node<E> prev = tail;
+			Node<E> current = tail.next;
+			for (int i = 0; i < index; i++) {
+				prev = current;
+				current = current.next;
+			}
+
+			prev.next = new Node<>(e, current);
+			++count;
+		} else {
+			throw new IndexOutOfBoundsException("Index is out of bounds! List size is " + count);
+		}
+	}
+
+	@Override
+	public E remove(int index) {
+		if (index >= 0 && index < count) {
+
+			Node<E> prev = tail;
+			Node<E> current = tail.next;
+
+			for (int i = 0; i < index; i++) {
+				prev = current;
+				current = current.next;
+			}
+
+			prev.next = current.next;
+			if (index == (count - 1)) {
+				tail = prev;
+			}
+			--count;
+
+			return current.element;
+		} else {
+			throw new IndexOutOfBoundsException("Index is out of bounds! List size is " + count);
+		}
+	}
+
+	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("{");
 
 		if (tail != null) {
-			Node<E> i = tail.next; // Starts at the head
+			Node<E> current = tail.next; // Starts at the head
 			do {
-				sb.append(i.element);
-				i = i.next;
-				if (i != tail.next) {
+				sb.append(current.element);
+				current = current.next;
+				if (current != tail.next) {
 					sb.append(", ");
 				}
-			} while (i != tail.next);
+			} while (current != tail.next);
 		}
 		sb.append("}");
 		return sb.toString();
