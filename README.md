@@ -2,25 +2,25 @@
 Implementing Data Structures and Algorithms in Java
 
 ### Data Structures and Algorithms Roadmap
--[x] Arrays
--[x] Linked Lists
-    -[x] Singly
-    -[x] Doubly
-    -[x] Circular
--[ ] Recursion    
--[x] Stacks, Queues and Deques
--[ ] Sorting and Searching
-    -[x] Bubble sort
-    -[x] Selection sort
-    -[x] Insertion sort
-    -[ ] Quick sort
-    -[ ] Merge sort
--[ ] Trees
--[ ] Priority Queues and Heaps
--[ ] Search Trees
--[ ] Maps, Hash Table and Skip lists
--[ ] Graphs
--[ ] String matching
+- [x] Arrays
+- [x] Linked Lists
+    - [x] Singly
+    - [x] Doubly
+    - [x] Circular
+- [ ] Recursion    
+- [x] Stacks, Queues and Deques
+- [ ] Sorting and Searching
+    - [x] Bubble sort
+    - [x] Selection sort
+    - [x] Insertion sort
+    - [ ] Quick sort
+    - [ ] Merge sort
+- [ ] Trees
+- [ ] Priority Queues and Heaps
+- [ ] Search Trees
+- [ ] Maps, Hash Table and Skip lists
+- [ ] Graphs
+- [ ] String matching
 
 *References:*
 1. *Data Structures and Algorithms in Java, 6th Edition, by Michael T. Goodrich, 
