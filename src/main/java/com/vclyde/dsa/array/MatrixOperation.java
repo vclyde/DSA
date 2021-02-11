@@ -8,17 +8,20 @@ import java.util.Arrays;
  */
 public final class MatrixOperation {
 
+	private MatrixOperation() {
+	}
+
 	public static int[][] add(int[][] x, int[][] y) {
 
 		int rows = x.length;
 		int cols = x[0].length;
 
 		if (rows != y.length) {
-			throw new IllegalArgumentException("Unmatched row size x is " + rows + " while y is " + y.length);
+			throw new IllegalArgumentException("Rows of the first matrix is " + rows + " while the second matrix is " + y.length);
 		}
 
 		if (cols != y[0].length) {
-			throw new IllegalArgumentException("Unmatched column size x is " + cols + " while y is " + y[0].length);
+			throw new IllegalArgumentException("Columns of the first matrix is " + cols + " while the second matrix is " + y[0].length);
 		}
 
 		int[][] output = new int[rows][cols];
@@ -73,7 +76,7 @@ public final class MatrixOperation {
 
 		return output;
 	}
-	
+
 	public static String toString(int[][] x) {
 		StringBuilder sb = new StringBuilder();
 		for (int[] row : x) {
@@ -81,25 +84,25 @@ public final class MatrixOperation {
 		}
 		return sb.toString();
 	}
-	
+
 	// Checks if 2 matrix are equal
 	public static boolean equals(int[][] x, int[][] y) {
-		
+
 		// Bounds check
 		if (x.length != y.length) {
 			return false;
 		}
-		
+
 		if (x[0].length != y[0].length) {
 			return false;
 		}
-		
+
 		for (int row = 0; row < x.length; row++) {
 			if (!Arrays.equals(x[row], y[row])) {
 				return false;
 			}
 		}
-		
+
 		return true;
 	}
 }
