@@ -158,17 +158,7 @@ public class DoublyLinkedList<E> implements List<E> {
 		}
 
 		sb.append("}");
-
-		// In reverse order
-//		sb.append("\n");
-//		sb.append("{");
-//		for (Node<E> current = this.trailer.prev; current != this.header; current = current.prev) {
-//			sb.append(current.element);
-//			if (current.prev != this.header) {
-//				sb.append(", ");
-//			}
-//		}
-//		sb.append("}");
+		
 		return sb.toString();
 	}
 
