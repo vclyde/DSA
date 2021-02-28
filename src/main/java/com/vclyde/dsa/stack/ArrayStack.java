@@ -64,8 +64,7 @@ public class ArrayStack<E> implements Stack<E> {
 		}
 		
 		E result = (E) stack[topIndex];
-		stack[topIndex--] = null; // Eliminate object object reference
-		
+		stack[topIndex--] = null; // Eliminate obsolete object reference
 		return result;
 	}
 
