@@ -1,7 +1,6 @@
 package com.vclyde.dsa.stack;
 
 import com.vclyde.dsa.interfaces.Stack;
-
 import java.util.Arrays;
 
 /**
@@ -63,7 +62,11 @@ public class ArrayStack<E> implements Stack<E> {
 		if (isEmpty()) {
 			return null;
 		}
-		return (E) stack[topIndex--];
+		
+		E result = (E) stack[topIndex];
+		stack[topIndex--] = null; // Eliminate object object reference
+		
+		return result;
 	}
 
 	@Override
